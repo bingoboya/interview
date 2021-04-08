@@ -26,4 +26,4 @@ app.get("/bingojson", (req, res) => {
 });
 
 
-http.listen(3000, {origins: '*:*'});
+app.listen(3000, {origins: '*:*'});

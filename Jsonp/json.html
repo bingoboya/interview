@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+<body>
+    <!-- <script>func()</script> -->
+    <!-- 下面的script执行并拿到后端返回的结果后，会形成上面的结果，内部的函数会自动被执行，详解在 server/index.js中 -->
+    <script>
+        // 启动本地 node-server监听3005端口，测试此段jsonp代码
+        window.addEventListener('click', ()=>{
+            const scriptDom = document.createElement('script')
+            // 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义过的回调函数 func
+            scriptDom.src = 'http://localhost:3005/bingojson?name=bingo&age=1000&callback=func'
+            document.body.appendChild(scriptDom)
+        })
+
+        const func = (val) =>{
+            console.log('回调', val);
+        }
+    </script>
+</body>
+</html>
